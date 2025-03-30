@@ -4,6 +4,9 @@ import google.generativeai as genai
 from aiogram import Bot, Dispatcher, types
 from aiogram.utils import executor
 
+# Включаем логирование
+logging.basicConfig(level=logging.INFO)
+
 # Твой API-ключ Gemini
 GEMINI_API_KEY = "AIzaSyAjNKWGMWVqMQ-a59tKLoe3ppX58RGUC0g"
 
@@ -15,17 +18,19 @@ genai.configure(api_key=GEMINI_API_KEY)
 model = genai.GenerativeModel("gemini-pro")
 
 # Настройка бота
-logging.basicConfig(level=logging.INFO)
 bot = Bot(token=TOKEN)
 dp = Dispatcher(bot)
 
 # Функция для общения с Gemini
 def ask_gemini(question):
     try:
+        logging.info(f"Отправляем вопрос в Gemini: {question}")
         response = model.generate_content(question)
+        logging.info(f"Ответ от Gemini: {response.text}")
         return response.text
     except Exception as e:
-        return "Ошибка при обработке запроса. Попробуйте позже."
+        logging.error(f"Ошибка при запросе к Gemini: {e}")
+        return f"Ошибка: {str(e)}"
 
 # Обработчик сообщений
 @dp.message_handler()
@@ -36,4 +41,5 @@ async def chat_with_gemini(message: types.Message):
 
 # Запуск бота
 if __name__ == "__main__":
+    logging.info("Бот запущен!")
     executor.start_polling(dp, skip_updates=True)
