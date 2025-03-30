@@ -5,8 +5,8 @@ from aiogram import Bot, Dispatcher, types
 from aiogram.types import Message
 from aiogram.utils import executor
 import os
-
-TOKEN = os.getenv("TOKEN")  # Получаем токен из переменных Railway
+GEMINI_API_KEY = AIzaSyAjNKWGMWVqMQ-a59tKLoe3ppX58RGUC0g
+TOKEN = os.getenv("TOKEN")  8170787826:AAEdbyq9XZhSWSROoR4Zs0MVjFwhfw88YKg
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher(bot)
