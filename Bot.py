@@ -5,7 +5,7 @@ from aiogram import Bot, Dispatcher, types
 from aiogram.types import Message
 from aiogram.utils import executor
 import os
-GEMINI_API_KEY = AIzaSyAjNKWGMWVqMQ-a59tKLoe3ppX58RGUC0g
+GEMINI_API_KEY = "AIzaSyAjNKWGMWVqMQ-a59tKLoe3ppX58RGUC0g"
 TOKEN = "8170787826:AAEdbyq9XZhSWSROoR4Zs0MVjFwhfw88YKg"
 
 bot = Bot(token=TOKEN)
